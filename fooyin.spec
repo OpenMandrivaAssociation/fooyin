@@ -1,13 +1,13 @@
 Name:           fooyin
 Version:        0.8.1
-Release:        0
+Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
+Group:		      Sound
 URL:            https://github.com/ludouzi/%{name}
-Source:         https://github.com/ludouzi/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  c++_compiler
+Source:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  qt6-base-devel
 BuildRequires:  cmake(KDSingleApplication-qt6)
 BuildRequires:  cmake(Qt6Core)
 BuildRequires:  cmake(Qt6DBus)
@@ -44,13 +44,11 @@ use of FooScript to offer an even deeper level of control.
 
 %build
 %cmake -DBUILD_LIBVGM=OFF
-%cmake_build
+%make_build
 
 %install
-%cmake_install
-# No header files were installed, so... no point in keeping the
-# component libraries' devel files.
-rm -fv %{buildroot}/%{_libdir}/fooyin/*.so
+%make_install -C build
+
 
 %files
 %license COPYING
