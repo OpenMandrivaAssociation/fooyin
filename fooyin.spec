@@ -15,6 +15,7 @@ Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
 Patch1:  Add-missing-header-include-for-QElapsedTimer-class.patch
 
 BuildRequires:  make
+BuildRequires:	patchelf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(KDSingleApplication-qt6)
 BuildRequires:	pkgconfig(Qt6Concurrent)
