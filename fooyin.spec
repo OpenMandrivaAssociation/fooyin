@@ -61,7 +61,7 @@ cp -r libvgm-*/* 3rdparty/libvgm/
 
 %files
 %license COPYING
-%doc README.md
+%doc README.md  %{_datadir}/doc/fooyin/LICENSE %{_datadir}/doc/fooyin/README
 %{_bindir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/metainfo/*
