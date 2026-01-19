@@ -1,21 +1,31 @@
+# set rpath
+%global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
-Version:        0.8.1
+Version:        0.9.2
 Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 Group:		      Sound
-URL:            https://github.com/ludouzi/%{name}
-Source:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://fooyin.org/
+Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
 
+# from opensuse
+Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
+Patch1:  Add-missing-header-include-for-QElapsedTimer-class.patch
+
+BuildRequires:  make
+BuildRequires:	patchelf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(KDSingleApplication-qt6)
-BuildRequires:  cmake(Qt6Core)
-BuildRequires:  cmake(Qt6DBus)
-BuildRequires:  cmake(Qt6Linguist)
-BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  cmake(Qt6OpenGLWidgets)
-BuildRequires:  cmake(Qt6Svg)
-BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:	pkgconfig(Qt6Concurrent)
+BuildRequires:	pkgconfig(Qt6Core)
+BuildRequires:	pkgconfig(Qt6DBus)
+BuildRequires:	pkgconfig(Qt6Linguist)
+BuildRequires:	pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:	pkgconfig(Qt6Sql)
+BuildRequires:	pkgconfig(Qt6Svg)
+BuildRequires:	pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libarchive)
@@ -25,13 +35,13 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 #BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 fooyin is a Qt6 music player built around customisation. It offers a
@@ -40,22 +50,33 @@ It is extendable through the use of plugins, and many widgets make
 use of FooScript to offer an even deeper level of control.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
+
+cp -r libvgm-*/* 3rdparty/libvgm/
 
 %build
-%cmake -DBUILD_LIBVGM=OFF
+%cmake
 %make_build
 
 %install
 %make_install -C build
 
+# tip from ROSA Linux
+# set rpath
+patchelf --set-rpath '$ORIGIN/../%{_lib}/%{name}' %{buildroot}%{_bindir}/%{name}
+
+# libs
+for lib in %{buildroot}%{_libdir}/fooyin/libfooyin_*.so*; do
+    patchelf --set-rpath '$ORIGIN' "$lib"
+done
 
 %files
 %license COPYING
-%doc README.md
+%doc README.md  
+%doc %{_datadir}/doc/fooyin/LICENSE 
+%doc %{_datadir}/doc/fooyin/README
 %{_bindir}/%{name}
 %{_datadir}/applications/*
-%{_datadir}/doc/%{name}
 %{_datadir}/metainfo/*
 %{_datadir}/icons/hicolor/*/apps/org.%{name}.%{name}.*
 %{_datadir}/%{name}
