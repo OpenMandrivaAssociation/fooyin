@@ -65,6 +65,11 @@ cp -r libvgm-*/* 3rdparty/libvgm/
 # set rpath
 patchelf --set-rpath '$ORIGIN/../%{_lib}/%{name}' %{buildroot}%{_bindir}/%{name}
 
+# libs
+for lib in %{buildroot}%{_libdir}/fooyin/libfooyin_*.so*; do
+    patchelf --set-rpath '$ORIGIN' "$lib"
+done
+
 %files
 %license COPYING
 %doc README.md  
