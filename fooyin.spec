@@ -1,3 +1,5 @@
+# set rpath
+%global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
 Version:        0.9.2
 Release:        1
