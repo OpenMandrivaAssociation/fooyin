@@ -1,11 +1,12 @@
 Name:           fooyin
-Version:        0.8.1
+Version:        0.9.2
 Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 Group:		      Sound
 URL:            https://github.com/ludouzi/%{name}
-Source:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
 
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(KDSingleApplication-qt6)
@@ -40,10 +41,12 @@ It is extendable through the use of plugins, and many widgets make
 use of FooScript to offer an even deeper level of control.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
+
+cp -r libvgm-*/* 3rdparty/libvgm/
 
 %build
-%cmake -DBUILD_LIBVGM=OFF
+%cmake
 %make_build
 
 %install
