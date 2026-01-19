@@ -4,7 +4,7 @@ Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 Group:		      Sound
-URL:            https://github.com/ludouzi/%{name}
+URL:            https://fooyin.org/
 Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
 
@@ -61,7 +61,9 @@ cp -r libvgm-*/* 3rdparty/libvgm/
 
 %files
 %license COPYING
-%doc README.md  %{_datadir}/doc/fooyin/LICENSE %{_datadir}/doc/fooyin/README
+%doc README.md  
+%doc %{_datadir}/doc/fooyin/LICENSE 
+%doc %{_datadir}/doc/fooyin/README
 %{_bindir}/%{name}
 %{_datadir}/applications/*
 %{_datadir}/metainfo/*
