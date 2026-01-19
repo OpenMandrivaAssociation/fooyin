@@ -64,7 +64,6 @@ cp -r libvgm-*/* 3rdparty/libvgm/
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/*
-%{_datadir}/doc/%{name}
 %{_datadir}/metainfo/*
 %{_datadir}/icons/hicolor/*/apps/org.%{name}.%{name}.*
 %{_datadir}/%{name}
