@@ -8,6 +8,10 @@ URL:            https://github.com/ludouzi/%{name}
 Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
 
+# from opensuse
+Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
+Patch1:  Add-missing-header-include-for-QElapsedTimer-class.patch
+
 BuildRequires:  make
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(KDSingleApplication-qt6)
