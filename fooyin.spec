@@ -60,6 +60,9 @@ cp -r libvgm-*/* 3rdparty/libvgm/
 %install
 %make_install -C build
 
+# tip from ROSA Linux
+# set rpath
+patchelf --set-rpath '$ORIGIN/../%{_lib}/%{name}' %{buildroot}%{_bindir}/%{name}
 
 %files
 %license COPYING
