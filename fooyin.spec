@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(zlib)
+BuildRequires:  cmake(QCoro6)
 
 %description
 fooyin is a Qt6 music player built around customisation. It offers a
