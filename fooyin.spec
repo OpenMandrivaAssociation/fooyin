@@ -52,7 +52,7 @@ It is extendable through the use of plugins, and many widgets make
 use of FooScript to offer an even deeper level of control.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -p1
 
 #cp -r libvgm-*/* 3rdparty/libvgm/
 
