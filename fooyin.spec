@@ -1,7 +1,7 @@
 # set rpath
 %global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
-Version:        0.9.2
+Version:        0.10.3
 Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
@@ -11,8 +11,8 @@ Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-
 Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
 
 # from opensuse
-Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
-Patch1:  Add-missing-header-include-for-QElapsedTimer-class.patch
+#Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
+#Patch1:  Add-missing-header-include-for-QElapsedTimer-class.patch
 
 BuildRequires:  make
 BuildRequires:	patchelf
@@ -37,6 +37,8 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
+BuildRequires:  pkgconfig(soundtouch)
+BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(taglib)
