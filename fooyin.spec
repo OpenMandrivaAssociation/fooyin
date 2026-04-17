@@ -58,6 +58,8 @@ use of FooScript to offer an even deeper level of control.
 #cp -r libvgm-*/* 3rdparty/libvgm/
 
 %build
+export CFLAGS="%{optflags} -fPIC"
+export CXXFLAGS="%{optflags} -fPIC"
 %cmake
 %make_build
 
