@@ -8,7 +8,7 @@ License:        GPL-3.0-only
 Group:		      Sound
 URL:            https://fooyin.org/
 Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
+#Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
 
 # from opensuse
 #Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
@@ -54,7 +54,7 @@ use of FooScript to offer an even deeper level of control.
 %prep
 %autosetup -p1 -a1
 
-cp -r libvgm-*/* 3rdparty/libvgm/
+#cp -r libvgm-*/* 3rdparty/libvgm/
 
 %build
 %cmake
