@@ -1,7 +1,7 @@
 # set rpath
 %global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
-Version:        0.10.3
+Version:        0.11.1
 Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
