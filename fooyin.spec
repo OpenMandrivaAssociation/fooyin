@@ -1,7 +1,7 @@
 # set rpath
 %global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
-Version:        0.11.1
+Version:        0.12.0
 Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 #BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpipewire-0.3)
+BuildRequires:	pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(soundtouch)
@@ -45,6 +46,8 @@ BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  cmake(QCoro6)
+
+#FIXME add projectM 4 as br
 
 %description
 fooyin is a Qt6 music player built around customisation. It offers a
