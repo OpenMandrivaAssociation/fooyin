@@ -1,3 +1,4 @@
+%undefine _debugsource_packages
 # set rpath
 %global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
