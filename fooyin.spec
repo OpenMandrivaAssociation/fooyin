@@ -1,9 +1,10 @@
+%global _find_debuginfo_dwz_opts %{nil}
 %undefine _debugsource_packages
 # set rpath
 %global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
 Version:        0.12.2
-Release:        4
+Release:        5
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 Group:		      Sound
