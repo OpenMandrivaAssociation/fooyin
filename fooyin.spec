@@ -3,18 +3,13 @@
 # set rpath
 %global ldflags %{ldflags} -Wl,-rpath -Wl,%{_libdir}/foo
 Name:           fooyin
-Version:        0.12.2
-Release:        6
+Version:        0.14.1
+Release:        1
 Summary:        A customisable music player built with Qt
 License:        GPL-3.0-only
 Group:		      Sound
 URL:            https://fooyin.org/
 Source0:         https://github.com/ludouzi/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-#Source1:	https://github.com/ValleyBell/libvgm/archive/libvgm-305b1bad78f7486c9e4058191abdd9195775efa0.zip
-
-# from opensuse
-#Patch0:  Fix-compatibility-with-Qt-6.10.1.patch
-#Patch1:  Add-missing-header-include-for-QElapsedTimer-class.patch
 
 BuildRequires:  make
 BuildRequires:	patchelf
@@ -59,8 +54,6 @@ use of FooScript to offer an even deeper level of control.
 
 %prep
 %autosetup -p1
-
-#cp -r libvgm-*/* 3rdparty/libvgm/
 
 %build
 export CFLAGS="%{optflags} -fPIC"
